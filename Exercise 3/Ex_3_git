@@ -109,4 +109,39 @@ reds, greens, blues = img_process("el-capitan.png")
 ## to undo your commit and delete the lines you added to get a “bug-free” version
 ## of your code. Also add the line println("Reset with git reset --mixed"). Think
 ## about whether this was real buggy code -- what would be the value of this reset?
->>>>>>> Buggy Function
+
+#Depends on the type of bug. If you want to know where bug is occuring, a softer
+#revision makese sense. If you don't care where bug is coming from, or you
+#accidently made it, then it a harder revision would be better if you want to get
+#rid of it.
+
+## Make a new 360x640x3 matrix; let’s call this image2. Set image2[:,:,1] to be
+## the G channel from the original image, image2[:,:,2] to be the B channel from
+## the original image, and image2[:,:,3] to be the R channel from the original
+## image. Use imshow() to display the original image and image2 side by side
+## (hint: use subplot(1,2,1) to first make a left-hand axis and work with that;
+## and then subplot(1,2,2) to make a right-hand axis, and work with that).
+## The commands figure(figsize=[x,y]), title("your text goes here"), and axis("off")
+## can be used to initialize a figure specified by x and y (width and height in
+## inches), add a title, and turn off the axis, respectively, for aesthetics.
+## Commit and push both the code and image to your repo.
+
+image2 = cat(greens, blues, dims = 3)
+image2 = cat(image2, reds, dims = 3)
+
+size(image2)
+
+image2[:,:,1] == elcap[:,:,2], image2[:,:,2] == elcap[:,:,3], image2[:,:,3] == elcap[:,:,1]
+
+
+figure(3, figsize = (8,3)); clf();
+
+subplot(1,2,1)
+imshow(elcap)
+title("El cap R-G-B")
+axis("off")
+
+subplot(1,2,2)
+imshow(image2)
+title("El cap G-B-R")
+axis("off")
