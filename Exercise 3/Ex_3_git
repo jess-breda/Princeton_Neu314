@@ -61,3 +61,52 @@ end
 reds, greens, blues = img_process("el-capitan.png")
 
 size(reds), size(greens), size(blues)
+<<<<<<< 6ac5148c4de8b2f4412376094ce59ad3fb47f1ee
+=======
+
+
+## Let’s say you think you can optimize this function in some way, but
+## accidentally break it. Simulate this by adding println("BUG BUG BUG") somewhere
+## in the code (and adding whatever else you want). Commit and push your “buggy”
+## file to the repository you just set up.
+
+function img_process(filename)
+    """
+    img_process -- reads in image, displays image, returns pixel information
+
+    Args:
+        filename (str): the name of the file you'd like to read in str quotes
+
+    Returns:
+        image (arr): array of image file loaded
+        red   (arr): matrix corresponding to red channel pixels
+        blue  (arr): matrix corresponding to blue channel pixels
+        green (arr): matrix corresponding to green channel pixels
+    """
+
+    #read in image
+    image = imread(filename)
+
+
+
+    #plot image
+    figure(2); clf();
+    imshow(image)
+
+    #extract variables
+    red    = image[:,:,1]
+    green  = image[:,:,2]
+    blue   = image[:,:,3]
+
+    return red, blue, green
+    println("Reset with git reset -- mixed")
+end
+
+reds, greens, blues = img_process("el-capitan.png")
+
+
+## Now, using version control commands in GitKraken, perform a git reset --mixed
+## to undo your commit and delete the lines you added to get a “bug-free” version
+## of your code. Also add the line println("Reset with git reset --mixed"). Think
+## about whether this was real buggy code -- what would be the value of this reset?
+>>>>>>> Buggy Function
