@@ -145,3 +145,56 @@ subplot(1,2,2)
 imshow(image2)
 title("El cap G-B-R")
 axis("off")
+
+
+## A “circular” rotation of elements in a matrix moves the contents of the
+## matrix such that elements that “fall off” one edge “circle back” to the
+## opposite edge. Write a function that, for given an image, circularly moves
+## only one channel, the red channel (remember, this is the first one) up some
+## number of pixels, p, such that the top p rows now become the bottom p rows.
+## Your function should take two arguments -- 1) your image and 2) the number of
+##pixels you want to shift it by -- and return the shifted image. Display both
+##the original image channel and the result of circularly moving the red channel
+##up by 180 pixels.
+
+function circular_shift(image, shift)
+    """
+    circular_shift -- circularly shifts the red pixels of an image by a specified amount
+
+    Args:
+        image (arr): the image array you want to modify
+        shift (int): number of pixels you want shifted
+
+    Returns:
+        image_shift (arr): array of image with red channel shifted by specified amount
+        plot of
+    """
+    #prep arrays
+    reds = image[:,:,1]
+    image_shift = copy(image)
+
+    #shift pixels
+    reds_shift = circshift(reds, shift)
+
+    #add to new matrix
+    image_shift[:,:,1] = reds_shift
+
+    #plot
+    figure(4); clf();
+    imshow(image_shift)
+
+    return image_shift
+end
+
+red_shift = circular_shift(elcap, -180)
+
+figure(5); clf()
+subplot(1,2,1)
+imshow(elcap)
+title("El cap R-G-B")
+axis("off")
+
+subplot(1,2,2)
+imshow(red_shift)
+title("El cap Red Shift")
+axis("off")
